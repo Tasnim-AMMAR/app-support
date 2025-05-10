@@ -19,6 +19,6 @@ model SupportRequest {
   category     String
   urgency      String
   status       String   @default("Pending")
-  adminComment String?  // optional
+  adminComment String?  
   createdAt    DateTime @default(now())
 }

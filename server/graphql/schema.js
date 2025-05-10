@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  scalar DateTime  
+
   type SupportRequest {
     id: ID!
     title: String!
@@ -9,7 +11,7 @@ const typeDefs = gql`
     urgency: String!
     status: String!
     adminComment: String
-    createdAt: String!
+    createdAt: DateTime! 
   }
 
   type Query {
@@ -23,7 +25,14 @@ const typeDefs = gql`
       category: String!
       urgency: String!
     ): SupportRequest!
+
+    updateSupportRequest(
+    id: ID!
+    status: String!
+    adminComment: String
+  ): SupportRequest!
   }
+  
 `;
 
 module.exports = { typeDefs };
