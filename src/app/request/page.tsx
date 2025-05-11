@@ -1,48 +1,40 @@
 "use client";
 
-import Image from "next/image";
-import Navbar from "../ui/Navbar";
+import React from "react";
+import { Title, Container } from "@mantine/core";
 import RequestForm from "../ui/RequestForm";
+import MainTabBar from "../ui/MainTabbar";
+import MainPanelContent from "../ui/MainPanelContent";
 
 export default function NewRequestPage() {
   return (
     <>
-      <Navbar />
+      <MainTabBar />
 
-      {/* Background gradients */}
-      {/* <Image
-        src="/bg-gradient.svg"
-        alt="Support illustration"
-        width={500}
-        height={500}
-        className="pointer-events-none fixed -start-10 top-10 w-full max-w-3xl object-fill blur-3xl"
-      />
-      <Image
-        src="/bg-gradient.svg"
-        alt="Support illustration"
-        width={500}
-        height={500}
-        className="pointer-events-none fixed bottom-0 end-[-50%] w-full max-w-3xl object-fill opacity-50 blur-3xl"
-      /> */}
+      <Container size="2xl" px="lg" py="lg">
+        <div className="grid grid-cols-12 gap-6">
+          {/* Sidebar */}
+          <div className="hidden md:block md:col-span-3 lg:col-span-2 mt-12">
+            <MainPanelContent />
+          </div>
 
-     {/* Main content */}
-<main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-12 bg-gradient-to-br from-blue-50 to-white">
-  {/* Title & Subtitle */}
-  <div className="max-w-2xl mb-10 text-center">
-    <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
-      Request Assistance
-    </h1>
-    <h2 className="text-xl sm:text-2xl font-semibold text-gray-700">
-      Fill out the form below and our support team will get back to you shortly.
-    </h2>
-  </div>
+          {/* Main Content */}
+          <div className="col-span-12 md:col-span-9 lg:col-span-10 space-y-6">
+            <div className="bg-gray-100 py-8 px-6 rounded-md">
+              <Title order={2} className="text-2xl font-bold">
+                New Request
+              </Title>
+              <p className="text-gray-700 text-sm mt-2">
+                Fill out the form below and our support team will get back to you shortly.
+              </p>
+            </div>
 
-  {/* Form card */}
-  <div className="w-full max-w-2xl bg-white p-6 sm:p-10 rounded-xl shadow-lg">
-    <RequestForm />
-  </div>
-</main>
-
+            <div className="w-full bg-white p-6 sm:p-10 rounded-md shadow-md">
+              <RequestForm />
+            </div>
+          </div>
+        </div>
+      </Container>
     </>
   );
 }
