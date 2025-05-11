@@ -14,6 +14,7 @@ import {
   Text,
   Textarea,
   Tooltip,
+  useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useMutation, useQuery, gql } from "@apollo/client";
@@ -56,11 +57,11 @@ const UPDATE_SUPPORT_REQUEST = gql`
 export default function AdminRequestsTable() {
   const { data, loading, error, refetch } = useQuery(GET_SUPPORT_REQUESTS);
   const [updateRequest] = useMutation(UPDATE_SUPPORT_REQUEST);
-
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedRequest, setSelectedRequest] = useState<any>(null);
   const [status, setStatus] = useState<string | null>(null);
   const [comment, setComment] = useState("");
+  const theme = useMantineTheme();
 
   const handleEditClick = (request: any) => {
     setSelectedRequest(request);
@@ -87,9 +88,7 @@ export default function AdminRequestsTable() {
   if (loading) return <Loader size="xl" className="mx-auto mt-20" />;
   if (error)
     return (
-      <Text color="red" ta="center">
-        Error fetching support requests: {error.message}
-      </Text>
+      <Text color="red">Error fetching support requests: {error.message}</Text>
     );
 
   const getStatusBadgeColor = (status: string) => {
@@ -123,17 +122,17 @@ export default function AdminRequestsTable() {
       <Table.Td>{request.title}</Table.Td>
       <Table.Td>{request.description}</Table.Td>
       <Table.Td>
-        <Badge color="gray" variant="light">
+        <Badge color="gray" variant="filled">
           {request.category}
         </Badge>
       </Table.Td>
       <Table.Td>
-        <Badge color={getUrgencyBadgeColor(request.urgency)} variant="light">
+        <Badge color={getUrgencyBadgeColor(request.urgency)} variant="filled">
           {request.urgency}
         </Badge>
       </Table.Td>
       <Table.Td>
-        <Badge color={getStatusBadgeColor(request.status)}>
+        <Badge color={getStatusBadgeColor(request.status)} variant="filled">
           {request.status}
         </Badge>
       </Table.Td>
@@ -148,7 +147,7 @@ export default function AdminRequestsTable() {
       <Table.Td>
         <Tooltip label="Edit request" withArrow>
           <ActionIcon
-            variant="light"
+            variant="filled"
             color="blue"
             onClick={() => handleEditClick(request)}
           >
@@ -162,23 +161,45 @@ export default function AdminRequestsTable() {
   return (
     <>
       <ScrollArea>
-        <Box p="md">
-          <Table striped highlightOnHover withTableBorder>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Title</Table.Th>
-                <Table.Th>Description</Table.Th>
-                <Table.Th>Category</Table.Th>
-                <Table.Th>Urgency</Table.Th>
-                <Table.Th>Status</Table.Th>
-                <Table.Th>Admin Comment</Table.Th>
-                <Table.Th>Created At</Table.Th>
-                <Table.Th>Action</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{rows}</Table.Tbody>
-          </Table>
-        </Box>
+        <Table
+          striped
+          highlightOnHover
+          withTableBorder
+          withColumnBorders
+          verticalSpacing="sm"
+          styles={{
+            table: {
+              backgroundColor:
+                theme.colorScheme === "dark" ? theme.colors.dark[6] : "white",
+            },
+            thead: {
+              backgroundColor:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[5]
+                  : theme.colors.gray[2],
+            },
+            th: {
+              color: theme.colorScheme === "dark" ? theme.white : theme.black,
+            },
+            td: {
+              color: theme.colorScheme === "dark" ? theme.white : theme.black,
+            },
+          }}
+        >
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>Title</Table.Th>
+              <Table.Th>Description</Table.Th>
+              <Table.Th>Category</Table.Th>
+              <Table.Th>Urgency</Table.Th>
+              <Table.Th>Status</Table.Th>
+              <Table.Th>Admin Comment</Table.Th>
+              <Table.Th>Created At</Table.Th>
+              <Table.Th>Action</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{rows}</Table.Tbody>
+        </Table>
       </ScrollArea>
 
       <Modal

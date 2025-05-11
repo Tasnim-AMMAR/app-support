@@ -18,17 +18,20 @@ export default function NewRequestPage() {
           </div>
 
           <div className="col-span-12 md:col-span-9 lg:col-span-10 space-y-6">
-            <div className="bg-gray-100 py-8 px-6 rounded-md">
-              <Title order={2} className="text-2xl font-bold">
+            <div className="bg-gray-100 dark:bg-gray-800 py-8 px-6 rounded-md">
+              <Title
+                order={2}
+                className="text-2xl font-bold text-gray-900 dark:text-white"
+              >
                 New Request
               </Title>
-              <p className="text-gray-700 text-sm mt-2">
+              <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
                 Fill out the form below and our support team will get back to
                 you shortly.
               </p>
             </div>
 
-            <div className="w-full bg-white p-6 sm:p-10 rounded-md shadow-md">
+            <div className="w-full bg-white dark:bg-gray-900 p-6 sm:p-10 rounded-md shadow-md">
               <RequestForm />
             </div>
           </div>

@@ -1,5 +1,3 @@
-// src/components/MainTabBarStatic.tsx
-
 import {
     IconBookmarks,
     IconCalendarCheck,

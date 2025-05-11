@@ -53,19 +53,6 @@ export default function Home() {
             />
           </div>
         </div>
-
-        {/* Optional Footer */}
-        <footer className="absolute bottom-6 left-0 w-full text-center text-sm text-gray-500">
-          Built with{" "}
-          <a
-            href="https://nextjs.org"
-            target="_blank"
-            rel="noreferrer"
-            className="underline hover:text-blue-600"
-          >
-            Next.js
-          </a>
-        </footer>
       </div>
     </>
   );

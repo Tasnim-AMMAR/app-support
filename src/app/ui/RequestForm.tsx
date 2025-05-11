@@ -64,7 +64,7 @@ export default function RequestForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack >
+      <Stack>
         <TextInput
           label="Title"
           placeholder="Enter the request title"
@@ -112,7 +112,13 @@ export default function RequestForm() {
           }
         />
 
-        <Button variant="subtle" type="submit" loading={loading} fullWidth color="blue">
+        <Button
+          variant="subtle"
+          type="submit"
+          loading={loading}
+          fullWidth
+          color="blue"
+        >
           Submit Request
         </Button>
 
