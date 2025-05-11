@@ -9,9 +9,21 @@ This is a full-stack application built with:
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14 or later)
+- Node.js 
 - npm or yarn
-- PostgreSQL (or another database supported by Prisma)
+- PostgreSQL 
+
+### Run PostgreSQL with Docker
+If you don’t have PostgreSQL installed locally, you can use Docker:
+
+```bash
+docker run --name app-support-postgres \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=app-support \
+  -p 5432:5432 \
+  -d postgres
+```
 
 ### Installation
 
