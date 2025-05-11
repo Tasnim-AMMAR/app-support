@@ -35,17 +35,17 @@ export default function MainPanelContent() {
           <span>Admin Table</span>
         </Link>
 
-        <Link href="/notifications" className="flex items-center p-2 rounded-lg hover:bg-gray-200">
+        <Link href="#" className="flex items-center p-2 rounded-lg hover:bg-gray-200">
           <IconBell className="mr-3" />
           <span>Notifications</span>
         </Link>
 
-        <Link href="/profile" className="flex items-center p-2 rounded-lg hover:bg-gray-200">
+        <Link href="#" className="flex items-center p-2 rounded-lg hover:bg-gray-200">
           <IconUser className="mr-3" />
           <span>Profile</span>
         </Link>
 
-        <Link href="/signin" className="flex items-center p-2 rounded-lg hover:bg-gray-200">
+        <Link href="#" className="flex items-center p-2 rounded-lg hover:bg-gray-200">
           <IconLogin2 className="mr-3" />
           <span>Sign In</span>
         </Link>
