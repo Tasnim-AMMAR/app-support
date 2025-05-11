@@ -10,7 +10,7 @@ export default function NewRequestPage() {
       <Navbar />
 
       {/* Background gradients */}
-      <Image
+      {/* <Image
         src="/bg-gradient.svg"
         alt="Support illustration"
         width={500}
@@ -23,7 +23,7 @@ export default function NewRequestPage() {
         width={500}
         height={500}
         className="pointer-events-none fixed bottom-0 end-[-50%] w-full max-w-3xl object-fill opacity-50 blur-3xl"
-      />
+      /> */}
 
      {/* Main content */}
 <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-12 bg-gradient-to-br from-blue-50 to-white">

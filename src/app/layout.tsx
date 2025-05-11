@@ -5,6 +5,7 @@ import "./globals.css";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { Providers } from "./providers";
+import Image from "next/image"; // ✅ Import Image
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-hidden`}
       >
+        {/* Background gradients */}
+        <Image
+          src="/bg-gradient.svg"
+          alt="Support illustration"
+          width={500}
+          height={500}
+          className="pointer-events-none fixed -start-10 top-10 w-full max-w-3xl object-fill blur-3xl"
+        />
+        <Image
+          src="/bg-gradient.svg"
+          alt="Support illustration"
+          width={500}
+          height={500}
+          className="pointer-events-none fixed bottom-0 end-[-50%] w-full max-w-3xl object-fill opacity-50 blur-3xl"
+        />
+
+        {/* Providers and theme setup */}
         <Providers>
           <MantineProvider defaultColorScheme="light">
             {children}

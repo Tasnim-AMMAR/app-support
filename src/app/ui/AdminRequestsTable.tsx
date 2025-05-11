@@ -20,7 +20,6 @@ import { useMutation, useQuery, gql } from "@apollo/client";
 import { IconEdit } from "@tabler/icons-react";
 import { useState } from "react";
 
-// GraphQL queries and mutations
 const GET_SUPPORT_REQUESTS = gql`
   query GetSupportRequests {
     supportRequests {
@@ -81,7 +80,7 @@ export default function AdminRequestsTable() {
       },
     });
 
-    await refetch(); // Refresh data
+    await refetch();
     close();
   };
 
@@ -185,12 +184,21 @@ export default function AdminRequestsTable() {
       <Modal
         opened={opened}
         onClose={close}
-        title="Edit Support Request"
+        title="Edit Request Status"
+        size="lg"
+        padding="xl"
+        overflow="inside"
+        closeOnClickOutside
+        closeOnEscape
+        withCloseButton
+        transition="fade"
+        transitionDuration={300}
+        transitionTimingFunction="ease"
         centered
       >
         <Select
           label="Status"
-          data={["accept", "reject"]}
+          data={["Accept", "Reject"]}
           value={status}
           onChange={setStatus}
           mb="md"
